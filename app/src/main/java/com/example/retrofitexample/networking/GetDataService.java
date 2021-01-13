@@ -1,17 +1,20 @@
 package com.example.retrofitexample.networking;
 
-import com.example.retrofitexample.model.Genre;
-import com.example.retrofitexample.model.GenreWrapper;
-
-import java.util.List;
+import com.example.retrofitexample.model.ResponseWrapper;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface GetDataService {
 
     @GET("genre/movie/list")
-    Call<GenreWrapper> getAllGenres(@Query("api_key") String key);
+    Call<ResponseWrapper> getAllGenres(@Query("api_key") String key);
+
+
+    @GET("discover/movie")
+    Call<ResponseWrapper> getPopularMovies(@Query("api_key") String key,
+                                           @Query("sort_by") String popularity,
+                                           @Query("page") int page,
+                                           @Query("with_genres") String genreId);
 }
