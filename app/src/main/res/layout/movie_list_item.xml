@@ -3,19 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardElevation="12dp"
     android:layout_margin="4dp">
 
-    <TextView
-        android:id="@+id/movie_text_view"
-        android:layout_width="match_parent"
+    <ImageView
+        android:contentDescription="Movie Poster"
+        android:id="@+id/movie_poster_imageview"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Space Jam"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        android:textColor="@color/black"
-        android:background="@color/purple_200"
-        android:padding="8dp"
-        android:gravity="center"/>
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/movie_title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@color/secondaryLightColor"
+        android:textColor="@color/secondaryTextColor"
+        tools:text="The Quick and the Dead"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
 </com.google.android.material.card.MaterialCardView>
