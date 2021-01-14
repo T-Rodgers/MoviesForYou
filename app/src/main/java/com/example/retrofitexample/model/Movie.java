@@ -3,8 +3,6 @@ package com.example.retrofitexample.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 
 public class Movie {
 
@@ -93,8 +91,11 @@ public class Movie {
         this.popularity = popularity;
     }
 
-    public String getPosterPath() {
-        return posterPath;
+    public String getPosterPath(String baseUrl) {
+        if (posterPath == null) {
+            return null;
+        }
+        return baseUrl + posterPath;
     }
 
     public void setPosterPath(String posterPath) {

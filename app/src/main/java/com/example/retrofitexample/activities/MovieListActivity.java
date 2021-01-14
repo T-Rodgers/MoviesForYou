@@ -1,33 +1,23 @@
 package com.example.retrofitexample.activities;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import com.example.retrofitexample.R;
-import com.example.retrofitexample.adapters.GenreAdapter;
 import com.example.retrofitexample.adapters.MovieAdapter;
-import com.example.retrofitexample.model.Genre;
 import com.example.retrofitexample.model.Movie;
-import com.example.retrofitexample.model.MoviesResponse;
-import com.example.retrofitexample.networking.MoviesService;
-import com.example.retrofitexample.networking.RetrofitClient;
 import com.example.retrofitexample.viewmodels.MoviesViewModel;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static com.example.retrofitexample.utils.Constants.API_KEY;
 import static com.example.retrofitexample.utils.Constants.EXTRA_SELECTED_GENRE_ID;
-import static com.example.retrofitexample.utils.Constants.POPULARITY_DESC;
 
 public class MovieListActivity extends AppCompatActivity {
 
@@ -57,11 +47,19 @@ public class MovieListActivity extends AppCompatActivity {
 
         if (adapter == null) {
             adapter = new MovieAdapter(this);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setLayoutManager(new GridLayoutManager(this, calculateNoOfColumns(this)));
             recyclerView.setAdapter(adapter);
         } else {
             adapter.notifyDataSetChanged();
         }
+    }
+
+    private static int calculateNoOfColumns(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        int scalingFactor = 120;
+        int noOfColumns = (int) (dpWidth / scalingFactor);
+        return noOfColumns;
     }
 
     private void initiateViewModel() {

@@ -4,18 +4,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.retrofitexample.R;
 import com.example.retrofitexample.model.Movie;
 
 import java.util.List;
 
+import static com.example.retrofitexample.utils.Constants.IMAGE_BASE_URL;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
-    private Context context;
+    private final Context context;
     private List<Movie> movieList;
 
     public MovieAdapter(Context context) {
@@ -32,7 +36,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movieList.get(position);
-        holder.movieTitle.setText(movie.getTitle());
+        if (movie.getPosterPath(IMAGE_BASE_URL) == null) {
+            holder.movieTitle.setText(movie.getTitle());
+            holder.movieTitle.setVisibility(View.VISIBLE);
+            holder.moviePoster.setVisibility(View.INVISIBLE);
+        } else {
+            String imageUrl = movie.getPosterPath(IMAGE_BASE_URL);
+            Glide.with(context)
+                    .asBitmap()
+                    .load(imageUrl)
+                    .override(342, 513)
+                    .centerCrop()
+                    .into(holder.moviePoster);
+        }
     }
 
     @Override
@@ -51,12 +67,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
 
+        private final ImageView moviePoster;
         private final TextView movieTitle;
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            movieTitle = itemView.findViewById(R.id.movie_text_view);
+            moviePoster = itemView.findViewById(R.id.movie_poster_imageview);
+            movieTitle = itemView.findViewById(R.id.movie_title_textView);
         }
     }
 }
