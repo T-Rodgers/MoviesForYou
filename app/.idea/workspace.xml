@@ -10,27 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88a8457f-d27e-48ec-93c1-091af3de18ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/androidTest/java/com/example/retrofitexample/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/activities/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/activities/MovieListActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/adapters/GenreAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/adapters/MovieAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/model/Genre.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/model/Movie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/model/MoviesResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/networking/MoviesRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/networking/MoviesService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/networking/RetrofitClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/utils/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/retrofitexample/viewmodels/MoviesViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/retrofitexample/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../settings.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="88a8457f-d27e-48ec-93c1-091af3de18ca" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
