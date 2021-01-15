@@ -44,14 +44,10 @@ public class MoviesRepository {
         return movieData;
     }
 
-//    @Query("api_key") String key,
-//    @Query("sort_by") String popularity,
-//    @Query("page") int page,
-//    @Query("with_genres") String genreId);
 
-    public MutableLiveData<MoviesResponse> getMovies(String key, String popularity, int page, String genreId) {
+    public MutableLiveData<MoviesResponse> getPopularMovies(String key, String popularity, int page, String genreId) {
         MutableLiveData<MoviesResponse> movieData = new MutableLiveData<>();
-        moviesService.getPopularMovies(key, popularity, page, genreId).enqueue(new Callback<MoviesResponse>() {
+        moviesService.getPopularMoviesByGenre(key, popularity, page, genreId).enqueue(new Callback<MoviesResponse>() {
             @Override
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
                 if (response.isSuccessful()) {
@@ -67,5 +63,21 @@ public class MoviesRepository {
         return movieData;
     }
 
+    public MutableLiveData<MoviesResponse> getTopRatedMovies(String key) {
+        MutableLiveData<MoviesResponse> movieData = new MutableLiveData<>();
+        moviesService.getTopRatedMovies(key).enqueue(new Callback<MoviesResponse>() {
+            @Override
+            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
+                if (response.isSuccessful()) {
+                    movieData.setValue(response.body());
+                }
+            }
 
+            @Override
+            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+                movieData.setValue(null);
+            }
+        });
+        return movieData;
+    }
 }

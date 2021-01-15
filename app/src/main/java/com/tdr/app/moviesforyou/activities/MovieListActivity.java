@@ -70,6 +70,5 @@ public class MovieListActivity extends AppCompatActivity {
             movies = moviesResponse.getMovies();
             adapter.setMovieList(movies);
         });
-
     }
 }

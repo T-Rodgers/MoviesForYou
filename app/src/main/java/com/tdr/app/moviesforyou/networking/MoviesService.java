@@ -12,9 +12,11 @@ public interface MoviesService {
     @GET("genre/movie/list")
     Call<MoviesResponse> getAllGenres(@Query("api_key") String key);
 
+    @GET("discover/movie/top_rated")
+    Call<MoviesResponse> getTopRatedMovies(@Query("api_key") String key);
 
     @GET("discover/movie")
-    Call<MoviesResponse> getPopularMovies(@Query("api_key") String key,
+    Call<MoviesResponse> getPopularMoviesByGenre(@Query("api_key") String key,
                                           @Query("sort_by") String popularity,
                                           @Query("page") int page,
                                           @Query("with_genres") String genreId);

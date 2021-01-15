@@ -28,11 +28,19 @@ public class MoviesViewModel extends ViewModel {
             return;
         }
         moviesRepository = MoviesRepository.getInstance();
-        mutableLiveData = moviesRepository.getMovies(
+        mutableLiveData = moviesRepository.getPopularMovies(
                 API_KEY,
                 POPULARITY_DESC,
                 1,
                 genreId);
+    }
+
+    public void getTopRatedMovies(String genreId) {
+        if (mutableLiveData != null) {
+            return;
+        }
+        moviesRepository = MoviesRepository.getInstance();
+        mutableLiveData = moviesRepository.getTopRatedMovies(API_KEY);
     }
 
     public LiveData<MoviesResponse> getMoviesRepository() {

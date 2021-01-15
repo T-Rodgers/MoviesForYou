@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnGe
     private List<Genre> genres;
     private GenreAdapter adapter;
     private RecyclerView recyclerView;
-    private MoviesViewModel moviesViewModel;
     ProgressDialog progressDialog;
 
 
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnGe
     }
 
     private void initiateViewModel() {
-        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel.class);
+        MoviesViewModel moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel.class);
         moviesViewModel.getGenres();
         moviesViewModel.getMoviesRepository().observe(this, moviesResponse -> {
             genres = moviesResponse.getGenres();

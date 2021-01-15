@@ -17,8 +17,6 @@ public class RetrofitClient {
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-
-            Log.d(TAG, "getRetrofitInstance: " + retrofit);
         }
         return retrofit;
     }
