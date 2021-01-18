@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RetrofitExample">
+        android:theme="@style/Theme.MoviesForYou">
         <activity android:name=".activities.GenreListActivity"></activity>
         <activity android:name=".activities.MovieListActivity" />
         <activity android:name=".activities.MainActivity">
