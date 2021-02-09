@@ -1,5 +1,5 @@
 # Movies For You
-This application show you movies using the MovieDatabase API.
+This application shows you movies using the MovieDatabase API. Sorts Popular Movies by Genre
 
 ## Designed using the following
 
