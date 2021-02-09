@@ -36,8 +36,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movieList.get(position);
+        String movieTitle = movie.getTitle();
+        holder.movieTitle.setText(movieTitle);
         if (movie.getPosterPath(IMAGE_BASE_URL) == null) {
-            holder.movieTitle.setText(movie.getTitle());
             holder.movieTitle.setVisibility(View.VISIBLE);
             holder.moviePoster.setVisibility(View.INVISIBLE);
         } else {
