@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -20,7 +21,7 @@ import java.util.List;
 import static com.tdr.app.moviesforyou.utils.Constants.EXTRA_SELECTED_GENRE_ID;
 
 
-public class MovieListActivity extends AppCompatActivity {
+public class MovieListActivity extends AppCompatActivity implements MovieAdapter.OnMovieClickHandler {
 
     private RecyclerView recyclerView;
     private String genreId;
@@ -47,7 +48,7 @@ public class MovieListActivity extends AppCompatActivity {
     private void initiateRecyclerView() {
 
         if (adapter == null) {
-            adapter = new MovieAdapter(this);
+            adapter = new MovieAdapter(this, this);
             recyclerView.setLayoutManager(new GridLayoutManager(this, calculateNoOfColumns(this)));
             recyclerView.setAdapter(adapter);
         } else {
@@ -70,5 +71,10 @@ public class MovieListActivity extends AppCompatActivity {
             movies = moviesResponse.getMovies();
             adapter.setMovieList(movies);
         });
+    }
+
+    @Override
+    public void onClick(Movie movie) {
+        Toast.makeText(this, movie.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

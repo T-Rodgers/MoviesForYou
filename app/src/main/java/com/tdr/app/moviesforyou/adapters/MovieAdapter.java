@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.tdr.app.moviesforyou.R;
+import com.tdr.app.moviesforyou.model.Genre;
 import com.tdr.app.moviesforyou.model.Movie;
 
 import java.util.List;
@@ -21,9 +22,15 @@ import static com.tdr.app.moviesforyou.utils.Constants.IMAGE_BASE_URL;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private final Context context;
     private List<Movie> movieList;
+    private final OnMovieClickHandler mClickHandler;
 
-    public MovieAdapter(Context context) {
+    public MovieAdapter(Context context, OnMovieClickHandler handler) {
         this.context = context;
+        mClickHandler = handler;
+    }
+
+    public interface OnMovieClickHandler{
+        void onClick(Movie movie);
     }
 
     @NonNull
@@ -66,7 +73,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         notifyDataSetChanged();
     }
 
-    public static class MovieViewHolder extends RecyclerView.ViewHolder {
+    public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final ImageView moviePoster;
         private final TextView movieTitle;
@@ -76,6 +83,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             moviePoster = itemView.findViewById(R.id.movie_poster_imageview);
             movieTitle = itemView.findViewById(R.id.movie_title_textView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            Movie movie = movieList.get(position);
+            mClickHandler.onClick(movie);
+
         }
     }
 }
