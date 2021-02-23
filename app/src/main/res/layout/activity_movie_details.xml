@@ -1,22 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MovieDetailsActivity">
-    <com.google.android.material.appbar.AppBarLayout
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha=".1"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/back_button"
+        app:layout_constraintEnd_toEndOf="@+id/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/back_button"
         android:layout_width="wrap_content"
-        android:layout_height="?actionBarSize">
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:src="@drawable/ic_sharp_arrow_back_ios_48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.appbar.AppBarLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/detail_movie_poster_backdrop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="277dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/detail_movie_poster"
+        android:layout_width="185dp"
+        android:layout_height="277dp"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_movie_poster_backdrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
