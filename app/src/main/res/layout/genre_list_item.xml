@@ -7,16 +7,21 @@
     android:layout_margin="8dp"
     app:cardElevation="8dp">
 
-    <TextView
-        android:id="@+id/genre_text_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        tools:text="Horror">
+        android:layout_height="match_parent">
 
-    </TextView>
+        <TextView
+            android:id="@+id/genre_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Horror" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

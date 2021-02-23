@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoviesForYou">
-        <activity android:name=".activities.GenreListActivity"></activity>
+        <activity android:name=".activities.MovieDetailsActivity"
+            android:parentActivityName=".activities.MovieListActivity">
+        </activity>
         <activity android:name=".activities.MovieListActivity" />
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.GenreListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
