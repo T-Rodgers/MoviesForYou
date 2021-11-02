@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.tdr.app.moviesforyou.network.Movie" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp">
+
+        <TextView
+            android:id="@+id/movie_id"
+            app:movieId="@{movie}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="15645506" />
+
+        <TextView
+            android:id="@+id/movie_title"
+            app:movieTitle="@{movie}"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintTop_toBottomOf="@id/movie_id"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="DUNE"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
