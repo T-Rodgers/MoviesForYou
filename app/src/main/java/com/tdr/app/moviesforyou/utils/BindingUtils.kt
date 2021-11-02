@@ -1,7 +1,10 @@
 package com.tdr.app.moviesforyou.utils
 
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -41,33 +44,32 @@ fun bindRecyclerView(recyclerView: RecyclerView, movies: List<Movie>?) {
 fun bindStatus(statusImageView: ImageView, status: MoviesApiStatus?) {
     when (status) {
         MoviesApiStatus.LOADING -> {
-            statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource(R.drawable.loading_animation)
+            statusImageView.visibility = GONE
         }
         MoviesApiStatus.ERROR -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_twotone_error_24)
         }
         MoviesApiStatus.DONE -> {
-            statusImageView.visibility = View.GONE
+            statusImageView.visibility = GONE
         }
     }
 }
 
-@BindingAdapter("statusText")
-fun bindStatusText(statusTextView: TextView, status: MoviesApiStatus?) {
+@BindingAdapter("statusIndicator")
+fun bindProgress(progress: ProgressBar, status: MoviesApiStatus?) {
+
     when (status) {
 
         MoviesApiStatus.LOADING -> {
-            statusTextView.visibility = View.GONE
+            progress.visibility = VISIBLE
         }
         MoviesApiStatus.ERROR -> {
 
-            statusTextView.visibility = View.VISIBLE
-
+            progress.visibility = GONE
         }
         MoviesApiStatus.DONE -> {
-            statusTextView.visibility = View.GONE
+            progress.visibility = GONE
 
         }
     }
