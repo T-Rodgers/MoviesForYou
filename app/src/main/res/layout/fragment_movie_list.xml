@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.tdr.app.moviesforyou.network.MoviesViewModel" />
@@ -13,11 +15,40 @@
         android:layout_height="match_parent"
         tools:context=".fragments.MovieListFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:padding="6dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:movieList="@{viewModel.movies.results}" />
+
+        <ImageView
+            android:id="@+id/status_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/error_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:statusImage="@{viewModel.status}"
+            tools:src="@drawable/ic_twotone_error_24" />
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="@string/connection_error_message"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status_image"
+            app:statusText="@{viewModel.status}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

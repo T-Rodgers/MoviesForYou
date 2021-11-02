@@ -29,7 +29,7 @@ private val retrofit = Retrofit.Builder()
 interface MoviesApiService{
 
     @GET("popular")
-    suspend fun getMovies(@Query("api_key") type: String): List<Movie>
+    suspend fun getMovies(@Query("api_key") type: String): MoviesResponse
 }
 
 object MoviesApi{
