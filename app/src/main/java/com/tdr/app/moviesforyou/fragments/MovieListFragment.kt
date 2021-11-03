@@ -33,6 +33,12 @@ class MovieListFragment : Fragment() {
             viewModel.displayMovieItemDetails(it)
         })
 
+        // TODO: (1) Set correct titles
+        // TODO: (2) Implement switching between top rated and popular
+        // TODO: (3) Add review list
+        // TODO: (4) Add trailer button
+        // TODO: (5) Implement Changing from popular to top-rated
+        // TODO: (6) Learn Pagination
         viewModel.navigateToDetails.observe(viewLifecycleOwner, Observer {
             if (null != it) {
                 this.findNavController().navigate(

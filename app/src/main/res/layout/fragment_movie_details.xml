@@ -9,6 +9,11 @@
             type="com.tdr.app.moviesforyou.details.DetailsViewModel" />
 
     </data>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/large_margin"
+        app:cardElevation="@dimen/large_elevation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,15 +21,40 @@
         tools:context=".fragments.MovieDetailsFragment">
 
         <ImageView
+            android:id="@+id/backdrop"
             android:contentDescription="@{viewModel.selectedMovie.title}"
             app:backdropImage="@{viewModel.selectedMovie}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
+            android:alpha=".7"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:src="@tools:sample/avatars"
             android:text="@string/hello_blank_fragment" />
 
+        <ImageView
+            android:id="@+id/poster"
+            android:contentDescription="@{viewModel.selectedMovie.title}"
+            app:posterImage="@{viewModel.selectedMovie}"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/backdrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/backdrop"
+            tools:src="@tools:sample/avatars"
+            android:text="@string/hello_blank_fragment" />
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/backdrop"
+            android:id="@+id/overview"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:padding="@dimen/small_padding"
+            app:overview="@{viewModel.selectedMovie}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>
