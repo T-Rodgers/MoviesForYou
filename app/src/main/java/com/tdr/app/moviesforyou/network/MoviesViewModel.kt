@@ -21,9 +21,20 @@ class MoviesViewModel: ViewModel() {
     val status : LiveData<MoviesApiStatus>
     get() = _status
 
+    private val _navigateToDetails = MutableLiveData<Movie>()
+    val navigateToDetails : LiveData<Movie>
+    get() = _navigateToDetails
 
     init {
         getMovies()
+    }
+
+    fun displayMovieItemDetails(movie: Movie) {
+        _navigateToDetails.value = movie
+    }
+
+    fun doneNavigating() {
+        _navigateToDetails.value = null
     }
 
     private fun getMovies() {

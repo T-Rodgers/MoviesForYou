@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.tdr.app.moviesforyou.R
 import com.tdr.app.moviesforyou.adapters.MovieListAdapter
 import com.tdr.app.moviesforyou.databinding.FragmentMovieListBinding
@@ -29,11 +30,21 @@ class MovieListFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val adapter = MovieListAdapter(MovieListAdapter.MovieItemClickListener {
-            Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
+            viewModel.displayMovieItemDetails(it)
+        })
+
+        viewModel.navigateToDetails.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController().navigate(
+                    MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(it)
+                )
+                viewModel.doneNavigating()
+            }
         })
 
         binding.recyclerView.adapter = adapter
 
         return binding.root
     }
+
 }
