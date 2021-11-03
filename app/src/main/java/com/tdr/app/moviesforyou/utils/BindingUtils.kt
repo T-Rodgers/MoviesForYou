@@ -18,23 +18,6 @@ import com.tdr.app.moviesforyou.network.MoviesApiStatus
 private const val BASE_BACKDROP_PATH_URL = "https://image.tmdb.org/t/p/w780" // 780x439
 private const val BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w300" // 300x450
 
-@BindingAdapter("movieId")
-fun TextView.setMovieId(movie: Movie?) {
-    text = movie?.let {
-        movie.id.toString()
-    }
-}
-
-/**
- * Binds TextView to set movie Title
- */
-@BindingAdapter("movieTitle")
-fun TextView.setMovieTitle(movie: Movie?) {
-    text = movie?.let {
-        movie.title
-    }
-}
-
 /**
  * Binds recyclerview to List of movies returned from response.
  */
@@ -94,7 +77,13 @@ fun bindBackdropPhoto(backdropImageView: ImageView, movie: Movie?) {
     movie?.let {
         Glide.with(backdropImageView.context)
             .load(BASE_BACKDROP_PATH_URL + movie.backdropPath)
+            .centerCrop()
             .into(backdropImageView)
     }
+}
+
+@BindingAdapter("overview")
+fun TextView.setOverviewText(movie: Movie?) {
+    text = movie?.let { movie.overview }
 }
 
