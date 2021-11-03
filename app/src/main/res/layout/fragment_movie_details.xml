@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="movie"
-            type="com.tdr.app.moviesforyou.network.Movie" />
+            name="viewModel"
+            type="com.tdr.app.moviesforyou.details.DetailsViewModel" />
 
     </data>
 
@@ -16,8 +16,8 @@
         tools:context=".fragments.MovieDetailsFragment">
 
         <ImageView
-            android:contentDescription="@{movie.title}"
-            app:backdropImage="@{movie}"
+            android:contentDescription="@{viewModel.selectedMovie.title}"
+            app:backdropImage="@{viewModel.selectedMovie}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
