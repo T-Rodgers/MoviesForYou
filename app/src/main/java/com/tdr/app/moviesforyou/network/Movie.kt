@@ -8,7 +8,7 @@ data class MoviesResponse(val results: List<Movie>)
 
 data class TrailersResponse(val results: List<Trailer>)
 
-data class Trailer(val id: String)
+data class Trailer(val key: String)
 
 @Parcelize
 data class Movie(
