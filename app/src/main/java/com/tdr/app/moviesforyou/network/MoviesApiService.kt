@@ -5,6 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -26,10 +27,13 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_MOVIE_DB_URL)
     .build()
 
-interface MoviesApiService{
+interface MoviesApiService {
 
     @GET("popular")
     suspend fun getMovies(@Query("api_key") type: String): MoviesResponse
+
+    @GET("{movie_id}/videos")
+    suspend fun getTrailers(@Path("movie_id")id: Int,@Query("api_key")type: String): TrailersResponse
 }
 
 object MoviesApi{

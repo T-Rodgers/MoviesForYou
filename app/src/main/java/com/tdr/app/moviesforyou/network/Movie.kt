@@ -6,6 +6,10 @@ import kotlinx.parcelize.Parcelize
 
 data class MoviesResponse(val results: List<Movie>)
 
+data class TrailersResponse(val results: List<Trailer>)
+
+data class Trailer(val id: String)
+
 @Parcelize
 data class Movie(
     val id: Int,
