@@ -1,6 +1,5 @@
 package com.tdr.app.moviesforyou.utils
 
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
@@ -24,7 +23,10 @@ private const val BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w300" // 30
 @BindingAdapter("movieList")
 fun bindRecyclerView(recyclerView: RecyclerView, movies: List<Movie>?) {
     val adapter = recyclerView.adapter as MovieListAdapter
-    movies?.let { adapter.submitList(movies) }
+    movies?.let {
+        recyclerView.scheduleLayoutAnimation()
+        adapter.submitList(movies)
+    }
 
 }
 
@@ -35,7 +37,7 @@ fun bindStatus(statusImageView: ImageView, status: MoviesApiStatus?) {
             statusImageView.visibility = GONE
         }
         MoviesApiStatus.ERROR -> {
-            statusImageView.visibility = View.VISIBLE
+            statusImageView.visibility = VISIBLE
             statusImageView.setImageResource(R.drawable.ic_twotone_error_24)
         }
         MoviesApiStatus.DONE -> {
@@ -53,7 +55,6 @@ fun bindProgress(progress: ProgressBar, status: MoviesApiStatus?) {
             progress.visibility = VISIBLE
         }
         MoviesApiStatus.ERROR -> {
-
             progress.visibility = GONE
         }
         MoviesApiStatus.DONE -> {
