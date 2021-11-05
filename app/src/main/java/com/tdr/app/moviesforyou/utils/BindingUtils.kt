@@ -1,10 +1,12 @@
 package com.tdr.app.moviesforyou.utils
 
+import android.os.Build
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -86,5 +88,13 @@ fun bindBackdropPhoto(backdropImageView: ImageView, movie: Movie?) {
 @BindingAdapter("overview")
 fun TextView.setOverviewText(movie: Movie?) {
     text = movie?.let { movie.overview }
+}
+
+@RequiresApi(Build.VERSION_CODES.N)
+@BindingAdapter("releaseDate")
+fun TextView.setReleaseDate(movie: Movie?) {
+    text = movie?.let{
+        context.getString(R.string.release_date, formatReleaseDate(movie.releaseDate))
+    }
 }
 
