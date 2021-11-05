@@ -22,7 +22,7 @@ class MovieListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie_list, container, false)
         viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
@@ -33,11 +33,10 @@ class MovieListFragment : Fragment() {
             viewModel.displayMovieItemDetails(it)
         })
 
-        // TODO: (1) Set correct titles
         // TODO: (2) Implement switching between top rated and popular
         // TODO: (3) Add review list
         // TODO: (6) Learn Pagination
-        viewModel.navigateToDetails.observe(viewLifecycleOwner, Observer {
+        viewModel.navigateToDetails.observe(viewLifecycleOwner, {
             if (null != it) {
                 this.findNavController().navigate(
                     MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(it)
