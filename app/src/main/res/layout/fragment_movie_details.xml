@@ -54,32 +54,24 @@
 
                 <TextView
                     android:id="@+id/overview"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium_margin"
-                    android:padding="@dimen/medium_padding"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_marginStart="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialButton"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
                     app:overview="@{viewModel.selectedMovie}" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/materialButton"
-                    style="@style/MaterialButton.IconOnly"
-                    android:layout_margin="@dimen/medium_margin"
-                    android:onClick="@{() -> viewModel.initializeTrailer(context)}"
-                    app:icon="@drawable/ic_baseline_videocam_48"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/backdrop" />
-
                 <TextView
-                    android:gravity="center_vertical"
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/medium_margin"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    app:layout_constraintBottom_toTopOf="@+id/overview"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/backdrop"
                     app:releaseDate="@{viewModel.selectedMovie}"
