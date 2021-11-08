@@ -4,7 +4,7 @@ import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
-data class MoviesResponse(val results: List<Movie>)
+data class MoviesResponse(val results: List<Movie>, @Json(name = "total_pages") val totalPages: Int)
 
 data class TrailersResponse(val results: List<Trailer>)
 

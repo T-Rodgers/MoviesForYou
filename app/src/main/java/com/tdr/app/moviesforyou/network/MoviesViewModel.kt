@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.tdr.app.moviesforyou.BuildConfig
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.lang.Exception
 
 const val API_KEY: String = BuildConfig.API_KEY
 enum class MoviesApiStatus { LOADING, ERROR, DONE }
@@ -26,7 +25,7 @@ class MoviesViewModel: ViewModel() {
     get() = _navigateToDetails
 
     init {
-        getMovies()
+        getPopularMovies()
     }
 
     fun displayMovieItemDetails(movie: Movie) {
@@ -37,15 +36,31 @@ class MoviesViewModel: ViewModel() {
         _navigateToDetails.value = null
     }
 
-    private fun getMovies() {
+    fun getPopularMovies() {
         viewModelScope.launch {
            _status.value = MoviesApiStatus.LOADING
             try {
-                _movies.value = MoviesApi.retrofitService.getMovies(API_KEY)
+                _movies.value = MoviesApi.retrofitService.getPopularMovies(API_KEY, 1)
                 _status.value = MoviesApiStatus.DONE
-                Timber.i(_movies.value!!.results[0].title)
+                Timber.i(_movies.value!!.totalPages.toString())
             } catch (e :Exception){
                _status.value = MoviesApiStatus.ERROR
+                _movies.value = null
+                Timber.i("Error retrieving movie list")
+            }
+
+        }
+    }
+
+    fun getTopRatedMovies() {
+        viewModelScope.launch {
+            _status.value = MoviesApiStatus.LOADING
+            try {
+                _movies.value = MoviesApi.retrofitService.getTopRatedMovies(API_KEY, 1)
+                _status.value = MoviesApiStatus.DONE
+                Timber.i(_movies.value!!.totalPages.toString())
+            } catch (e :Exception){
+                _status.value = MoviesApiStatus.ERROR
                 _movies.value = null
                 Timber.i("Error retrieving movie list")
             }

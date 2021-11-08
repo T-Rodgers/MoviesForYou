@@ -1,12 +1,9 @@
 package com.tdr.app.moviesforyou.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.tdr.app.moviesforyou.R
@@ -33,7 +30,6 @@ class MovieListFragment : Fragment() {
             viewModel.displayMovieItemDetails(it)
         })
 
-        // TODO: (2) Implement switching between top rated and popular
         // TODO: (3) Add review list
         // TODO: (6) Learn Pagination
         viewModel.navigateToDetails.observe(viewLifecycleOwner, {
@@ -46,8 +42,22 @@ class MovieListFragment : Fragment() {
         })
 
         binding.recyclerView.adapter = adapter
+        setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.movie_list_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_popular -> viewModel.getPopularMovies()
+            R.id.action_top_rated -> viewModel.getTopRatedMovies()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

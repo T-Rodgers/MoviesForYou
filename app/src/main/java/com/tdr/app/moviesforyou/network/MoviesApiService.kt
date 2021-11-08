@@ -10,11 +10,8 @@ import retrofit2.http.Query
 
 
 private const val BASE_MOVIE_DB_URL = "https://api.themoviedb.org/3/movie/"
-enum class MovieApiFilter(val value: String){
-    SHOW_POPULAR("popular"),
-    SHOW_TOP_RATED("top_rated")
-
-}
+private const val SHOW_POPULAR = "popular"
+private const val SHOW_TOP_RATED = "top_rated"
 
 /** Build the Moshi object to use with Retrofit. */
 private val moshi = Moshi.Builder()
@@ -29,8 +26,11 @@ private val retrofit = Retrofit.Builder()
 
 interface MoviesApiService {
 
-    @GET("popular")
-    suspend fun getMovies(@Query("api_key") type: String): MoviesResponse
+    @GET(SHOW_POPULAR)
+    suspend fun getPopularMovies(@Query("api_key") type: String, @Query("page")page: Int): MoviesResponse
+
+    @GET(SHOW_TOP_RATED)
+    suspend fun getTopRatedMovies(@Query("api_key") type: String, @Query("page")page: Int): MoviesResponse
 
     @GET("{movie_id}/videos")
     suspend fun getTrailers(@Path("movie_id")id: Int,@Query("api_key")type: String): TrailersResponse
