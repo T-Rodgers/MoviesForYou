@@ -26,7 +26,6 @@ private const val BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w300" // 30
 fun bindRecyclerView(recyclerView: RecyclerView, movies: List<Movie>?) {
     val adapter = recyclerView.adapter as MovieListAdapter
     movies?.let {
-        recyclerView.scheduleLayoutAnimation()
         adapter.submitList(movies)
     }
 
@@ -93,8 +92,15 @@ fun TextView.setOverviewText(movie: Movie?) {
 @RequiresApi(Build.VERSION_CODES.N)
 @BindingAdapter("releaseDate")
 fun TextView.setReleaseDate(movie: Movie?) {
-    text = movie?.let{
+    text = movie?.let {
         context.getString(R.string.release_date, formatReleaseDate(movie.releaseDate))
+    }
+}
+
+@BindingAdapter("voteAverage")
+fun TextView.setVoteAverage(movie: Movie?) {
+    text = movie?.let{
+        movie.voteAverage.toString()
     }
 }
 
