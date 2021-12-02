@@ -1,6 +1,6 @@
 # MoviesForYou
 
-This application shows the Top 20 current popular movies from the Movie Database.
+This application shows the Top 20 current popular movies from the Movie Database. Movies are updated Daily
 
 ## Overview
 Movies are able to be sorted by popularity or by vote average.
