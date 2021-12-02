@@ -20,10 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="6dp"
-            android:layoutAnimation="@anim/layout_animation"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
-            app:movieList="@{viewModel.movies.results}" />
+            app:movieList="@{viewModel.movies}" />
 
         <!-- Linear progress indicator -->
         <ProgressBar

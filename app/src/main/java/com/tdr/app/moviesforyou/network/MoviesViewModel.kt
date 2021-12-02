@@ -1,31 +1,73 @@
 package com.tdr.app.moviesforyou.network
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tdr.app.moviesforyou.BuildConfig
+import com.tdr.app.moviesforyou.database.MovieRepository
+import com.tdr.app.moviesforyou.database.getDatabase
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 const val API_KEY: String = BuildConfig.API_KEY
-enum class MoviesApiStatus { LOADING, ERROR, DONE }
-class MoviesViewModel: ViewModel() {
 
-    private val _movies = MutableLiveData<MoviesResponse>()
-    val movies : LiveData<MoviesResponse>
-    get() = _movies
+enum class MoviesApiStatus { LOADING, ERROR, DONE }
+class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _status = MutableLiveData<MoviesApiStatus>()
-    val status : LiveData<MoviesApiStatus>
-    get() = _status
+    val status: LiveData<MoviesApiStatus>
+        get() = _status
 
     private val _navigateToDetails = MutableLiveData<Movie>()
-    val navigateToDetails : LiveData<Movie>
-    get() = _navigateToDetails
+    val navigateToDetails: LiveData<Movie>
+        get() = _navigateToDetails
+
+    private val _movies = MutableLiveData<LiveData<List<Movie>>>()
+    val movies: LiveData<LiveData<List<Movie>>>
+        get() = _movies
+
+    private val database = getDatabase(application)
+    private val repository = MovieRepository(database)
 
     init {
-        getPopularMovies()
+        retrievePopularMovies()
+        viewModelScope.launch {
+            try {
+                repository.refreshMovies()
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun retrievePopularMovies() {
+        viewModelScope.launch {
+            _status.value = MoviesApiStatus.LOADING
+
+            try {
+                _movies.value = repository.movies
+                _status.value = MoviesApiStatus.DONE
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _status.value = MoviesApiStatus.ERROR
+            }
+        }
+    }
+
+    fun retrieveTopRatedMovies() {
+        viewModelScope.launch {
+            _status.value = MoviesApiStatus.LOADING
+
+            try {
+                _movies.value = repository.topRatedMovies
+                _status.value = MoviesApiStatus.DONE
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _status.value = MoviesApiStatus.ERROR
+            }
+        }
     }
 
     fun displayMovieItemDetails(movie: Movie) {
@@ -34,37 +76,5 @@ class MoviesViewModel: ViewModel() {
 
     fun doneNavigating() {
         _navigateToDetails.value = null
-    }
-
-    fun getPopularMovies() {
-        viewModelScope.launch {
-           _status.value = MoviesApiStatus.LOADING
-            try {
-                _movies.value = MoviesApi.retrofitService.getPopularMovies(API_KEY, 1)
-                _status.value = MoviesApiStatus.DONE
-                Timber.i(_movies.value!!.totalPages.toString())
-            } catch (e :Exception){
-               _status.value = MoviesApiStatus.ERROR
-                _movies.value = null
-                Timber.i("Error retrieving movie list")
-            }
-
-        }
-    }
-
-    fun getTopRatedMovies() {
-        viewModelScope.launch {
-            _status.value = MoviesApiStatus.LOADING
-            try {
-                _movies.value = MoviesApi.retrofitService.getTopRatedMovies(API_KEY, 1)
-                _status.value = MoviesApiStatus.DONE
-                Timber.i(_movies.value!!.totalPages.toString())
-            } catch (e :Exception){
-                _status.value = MoviesApiStatus.ERROR
-                _movies.value = null
-                Timber.i("Error retrieving movie list")
-            }
-
-        }
     }
 }

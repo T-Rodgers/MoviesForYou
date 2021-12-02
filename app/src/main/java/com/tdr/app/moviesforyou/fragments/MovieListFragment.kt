@@ -14,7 +14,10 @@ import com.tdr.app.moviesforyou.network.MoviesViewModel
 class MovieListFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieListBinding
-    private lateinit var viewModel: MoviesViewModel
+
+    private val viewModel: MoviesViewModel by lazy {
+        ViewModelProvider(this).get(MoviesViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,7 +25,7 @@ class MovieListFragment : Fragment() {
     ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie_list, container, false)
-        viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
+
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -54,10 +57,9 @@ class MovieListFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_popular -> viewModel.getPopularMovies()
-            R.id.action_top_rated -> viewModel.getTopRatedMovies()
+            R.id.action_popular -> viewModel.retrievePopularMovies()
+            R.id.action_top_rated -> viewModel.retrieveTopRatedMovies()
         }
         return super.onOptionsItemSelected(item)
     }
-
 }
