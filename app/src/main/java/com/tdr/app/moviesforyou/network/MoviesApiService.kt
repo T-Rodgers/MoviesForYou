@@ -13,7 +13,6 @@ import retrofit2.http.Query
 
 private const val BASE_MOVIE_DB_URL = "https://api.themoviedb.org/3/movie/"
 private const val SHOW_POPULAR = "popular"
-private const val SHOW_TOP_RATED = "top_rated"
 
 /** Build the Moshi object to use with Retrofit. */
 private val moshi = Moshi.Builder()
@@ -30,10 +29,10 @@ private val retrofit = Retrofit.Builder()
 interface MoviesApiService {
 
     @GET(SHOW_POPULAR)
-     fun getPopularMoviesAsync(
+     suspend fun getPopularMovies(
         @Query("api_key") type: String,
         @Query("page") page: Int
-    ): Deferred<MoviesResponse>
+    ): MoviesResponse
 
     @GET("{movie_id}/videos")
     suspend fun getTrailers(

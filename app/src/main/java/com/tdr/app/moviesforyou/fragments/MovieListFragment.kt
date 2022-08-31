@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.tdr.app.moviesforyou.R
@@ -35,7 +36,7 @@ class MovieListFragment : Fragment() {
 
         // TODO: (3) Add review list
         // TODO: (6) Learn Pagination
-        viewModel.navigateToDetails.observe(viewLifecycleOwner, {
+        viewModel.navigateToDetails.observe(viewLifecycleOwner, Observer{
             if (null != it) {
                 this.findNavController().navigate(
                     MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(it)
@@ -58,7 +59,7 @@ class MovieListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_popular -> viewModel.retrievePopularMovies()
-            R.id.action_top_rated -> viewModel.retrieveTopRatedMovies()
+            R.id.action_top_rated -> viewModel.sortByTopRated()
         }
         return super.onOptionsItemSelected(item)
     }

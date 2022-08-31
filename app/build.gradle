@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
@@ -41,10 +41,7 @@ android {
 
 dependencies {
 
-    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.21"
-
-    // Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout:2.1.2"
     implementation 'com.google.android.material:material:1.4.0'
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
@@ -62,6 +59,9 @@ dependencies {
     // Core with Ktx
     implementation "androidx.core:core-ktx:1.6.0"
 
+    // Koin for dependency injection
+    implementation "io.insert-koin:koin-android:3.2.0"
+
     // Moshi
     implementation "com.squareup.moshi:moshi:1.9.3"
     implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
@@ -73,6 +73,10 @@ dependencies {
 
     // Timber for logging
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // WorkManager
+    implementation "android.arch.work:work-runtime-ktx:1.0.1"
 
 }

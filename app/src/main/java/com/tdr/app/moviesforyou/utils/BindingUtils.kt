@@ -1,6 +1,7 @@
 package com.tdr.app.moviesforyou.utils
 
 import android.os.Build
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
@@ -95,6 +96,19 @@ fun TextView.setReleaseDate(movie: Movie?) {
     text = movie?.let {
         context.getString(R.string.release_date, formatReleaseDate(movie.releaseDate))
     }
+}
+
+@BindingAdapter("status_message")
+fun setStatusMessage(textView: TextView, status: MoviesApiStatus?){
+    var message: String? = null
+    when(status){
+        MoviesApiStatus.LOADING -> {
+            message = "Loading Movies"
+        }
+        MoviesApiStatus.ERROR -> { message = "Unable to load movies. Check the network."}
+        else -> {textView.visibility = GONE }
+    }
+    textView.text = message
 }
 
 @BindingAdapter("voteAverage")

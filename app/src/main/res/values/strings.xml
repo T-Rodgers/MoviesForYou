@@ -5,7 +5,7 @@
     <string name="release_date">Released: %1$s</string>
     <string name="movie_details_title">Movie Details</string>
     <string name="view_trailer_menu_title">View Trailer</string>
-    <string name="top_rated_menu_item">Top Rated</string>
-    <string name="popular_menu_item">Popular</string>
+    <string name="top_rated_menu_item">Rating</string>
+    <string name="popular_menu_item">Popularity</string>
     <string name="action_sort_by_title">Sort By</string>
 </resources>

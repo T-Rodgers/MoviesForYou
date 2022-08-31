@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
         <item name="fontFamily">@font/biryani</item>
+        <item name="android:windowBackground">@color/parentBackgroundColor</item>
     </style>
 
     <style name="MaterialButton.IconOnly" parent="MaterialAlertDialog.MaterialComponents.Title.Icon">

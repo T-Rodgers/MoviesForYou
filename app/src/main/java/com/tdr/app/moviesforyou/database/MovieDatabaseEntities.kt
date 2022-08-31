@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.tdr.app.moviesforyou.network.Movie
 
-@Entity
+@Entity(tableName = "movies")
 data class DatabaseMovie(
     @PrimaryKey
     val id: Int,

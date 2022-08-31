@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.tdr.app.moviesforyou.details.DetailsViewModel" />
+            name="movie"
+            type="com.tdr.app.moviesforyou.network.Movie" />
 
     </data>
 
@@ -31,9 +31,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:alpha=".7"
-                    android:contentDescription="@{viewModel.selectedMovie.title}"
+                    android:contentDescription="@{movie.title}"
                     android:text="@string/hello_blank_fragment"
-                    app:backdropImage="@{viewModel.selectedMovie}"
+                    app:backdropImage="@{movie}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -43,13 +43,13 @@
                     android:id="@+id/poster"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:contentDescription="@{viewModel.selectedMovie.title}"
+                    android:contentDescription="@{movie.title}"
                     android:text="@string/hello_blank_fragment"
                     app:layout_constraintBottom_toBottomOf="@id/backdrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/backdrop"
-                    app:posterImage="@{viewModel.selectedMovie}"
+                    app:posterImage="@{movie}"
                     tools:src="@tools:sample/avatars" />
 
                 <TextView
@@ -62,7 +62,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/release_date"
-                    app:overview="@{viewModel.selectedMovie}" />
+                    app:overview="@{movie}" />
 
                 <TextView
                     android:id="@+id/release_date"
@@ -74,7 +74,7 @@
                     android:textStyle="italic"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/backdrop"
-                    app:releaseDate="@{viewModel.selectedMovie}"
+                    app:releaseDate="@{movie}"
                     tools:text="Released: 12-12-2022" />
 
                 <TextView
@@ -84,7 +84,7 @@
                     android:layout_marginTop="@dimen/medium_margin"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:voteAverage="@{viewModel.selectedMovie}"
+                    app:voteAverage="@{movie}"
                     android:layout_marginEnd="@dimen/medium_margin"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/backdrop"

@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
 data class MoviesResponse(
-    val results: List<NetworkMovie>,
+    val results: List<Movie>,
     @Json(name = "total_pages") val totalPages: Int
 )
 
@@ -27,17 +27,6 @@ data class Movie(
     val popularity: Double,
     @Json(name = "vote_average")val voteAverage: Double
 ) : Parcelable
-
-data class NetworkMovie constructor(
-    val id: Int,
-    val title: String,
-    val overview: String,
-    @Json(name = "backdrop_path") val backdropPath: String,
-    @Json(name = "poster_path") val posterPath: String,
-    @Json(name = "release_date") val releaseDate: String,
-    val popularity: Double,
-    @Json(name = "vote_average")val voteAverage: Double
-)
 
 fun MoviesResponse.asDatabaseModel(): Array<DatabaseMovie> {
     return results.map {
