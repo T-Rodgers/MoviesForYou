@@ -1,4 +1,4 @@
-package com.tdr.app.moviesforyou.database
+package com.tdr.app.moviesforyou.data
 
 import android.content.Context
 import androidx.room.Room
