@@ -23,7 +23,7 @@
             android:padding="6dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
-            app:movieList="@{viewModel.movies}" />
+            app:movieList="@{viewModel.movies}"/>
 
         <!-- Linear progress indicator -->
         <ProgressBar

@@ -1,22 +1,23 @@
 package com.tdr.app.moviesforyou.network
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.tdr.app.moviesforyou.BuildConfig
-import com.tdr.app.moviesforyou.database.DatabaseMovie
+import com.tdr.app.moviesforyou.database.BY_RATING_VALUE
 import com.tdr.app.moviesforyou.database.MovieRepository
 import com.tdr.app.moviesforyou.database.getDatabase
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Double
 
 const val API_KEY: String = BuildConfig.API_KEY
 
 enum class MoviesApiStatus { LOADING, ERROR, DONE }
+
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _status = MutableLiveData<MoviesApiStatus>()
@@ -27,12 +28,16 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     val navigateToDetails: LiveData<Movie?>
         get() = _navigateToDetails
 
-    private val _movies = MutableLiveData<LiveData<List<Movie>>>()
-    val movies: LiveData<LiveData<List<Movie>>>
-        get() = _movies
+
+    val _movies = MutableLiveData<LiveData<List<Movie>>>()
+    val movies : LiveData<LiveData<List<Movie>>>
+    get() = _movies
 
     private val database = getDatabase(application)
     private val repository = MovieRepository(database)
+
+    val moviesFlow = repository.moviesFlow.asLiveData()
+    val sortedByRatingFlow = repository.sortedByRatingFlow.asLiveData()
 
     init {
         retrievePopularMovies()
@@ -48,17 +53,18 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun retrievePopularMovies() {
         loadMovieData {
-            _movies.value = repository.movies
+            _movies.value = moviesFlow
+
         }
     }
 
     fun sortByTopRated() {
         loadMovieData {
-            _movies.value = repository.topRatedMovies
+            _movies.value = sortedByRatingFlow
         }
     }
 
-    fun loadMovieData(block: suspend () -> Unit): Job {
+    private fun loadMovieData(block: suspend () -> Unit): Job {
         return viewModelScope.launch {
 
             _status.value = MoviesApiStatus.LOADING

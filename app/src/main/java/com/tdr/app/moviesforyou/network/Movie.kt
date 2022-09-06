@@ -1,6 +1,8 @@
 package com.tdr.app.moviesforyou.network
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import com.tdr.app.moviesforyou.database.DatabaseMovie
@@ -16,8 +18,10 @@ data class TrailersResponse(val results: List<Trailer>)
 
 data class Trailer(val key: String)
 
+@Entity(tableName = "movies")
 @Parcelize
 data class Movie(
+    @PrimaryKey
     val id: Int,
     val title: String,
     val overview: String,

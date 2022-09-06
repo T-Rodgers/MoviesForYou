@@ -34,8 +34,6 @@ class MovieListFragment : Fragment() {
             viewModel.displayMovieItemDetails(it)
         })
 
-        // TODO: (3) Add review list
-        // TODO: (6) Learn Pagination
         viewModel.navigateToDetails.observe(viewLifecycleOwner, Observer{
             if (null != it) {
                 this.findNavController().navigate(
@@ -46,6 +44,7 @@ class MovieListFragment : Fragment() {
         })
 
         binding.recyclerView.adapter = adapter
+
         setHasOptionsMenu(true)
 
         return binding.root
