@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="com.tdr.app.moviesforyou.network.Movie" />
+            type="com.tdr.app.moviesforyou.data.Movie" />
 
     </data>
 

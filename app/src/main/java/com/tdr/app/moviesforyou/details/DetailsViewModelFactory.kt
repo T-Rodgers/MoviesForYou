@@ -3,7 +3,7 @@ package com.tdr.app.moviesforyou.details
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.tdr.app.moviesforyou.network.Movie
+import com.tdr.app.moviesforyou.data.Movie
 
 class DetailsViewModelFactory(private val movie: Movie,
                               private val application: Application): ViewModelProvider.Factory {

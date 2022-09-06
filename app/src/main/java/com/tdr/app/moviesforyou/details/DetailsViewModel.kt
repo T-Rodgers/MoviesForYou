@@ -9,7 +9,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.tdr.app.moviesforyou.network.*
+import com.tdr.app.moviesforyou.data.Movie
+import com.tdr.app.moviesforyou.data.Trailer
+import com.tdr.app.moviesforyou.data.TrailersRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -23,9 +25,11 @@ class DetailsViewModel(movie: Movie, application: Application) : AndroidViewMode
     val trailer: LiveData<Trailer>
         get() = _trailer
 
-    private val _trailers = MutableLiveData<TrailersResponse>()
-    val trailers: LiveData<TrailersResponse>
+    private val _trailers = MutableLiveData<List<Trailer?>>()
+    val trailers: LiveData<List<Trailer?>>
         get() = _trailers
+
+    private val repository = TrailersRepository()
 
     init {
         _selectedMovie.value = movie
@@ -33,10 +37,9 @@ class DetailsViewModel(movie: Movie, application: Application) : AndroidViewMode
     }
 
     private fun getTrailers(movie: Movie) {
-        val id = movie.id
         viewModelScope.launch {
             try {
-                _trailers.value = MoviesApi.retrofitService.getTrailers(id, API_KEY)
+                _trailers.value = repository.fetchTrailers(movie)
             } catch (e: Exception){
                 Timber.i("Unable to load trailers")
             }
@@ -49,15 +52,14 @@ class DetailsViewModel(movie: Movie, application: Application) : AndroidViewMode
      * acknowledging "No trailer found".
      */
     fun initializeTrailer(context: Context) {
-        var trailerKey = ""
-        if (_trailers.value?.results?.isEmpty() == true) {
+        if (_trailers.value?.isEmpty() == true) {
             Toast.makeText(
                 context,
                 "No trailer found",
                 Toast.LENGTH_LONG
             ).show()
         } else {
-           trailerKey = _trailers.value?.results?.get(0)?.key.toString()
+          val trailerKey = _trailers.value?.get(0)?.key.toString()
             val trailerIntent =
                 Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=$trailerKey"))
             context.startActivity(trailerIntent)

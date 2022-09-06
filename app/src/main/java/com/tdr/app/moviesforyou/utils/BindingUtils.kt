@@ -1,7 +1,6 @@
 package com.tdr.app.moviesforyou.utils
 
 import android.os.Build
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tdr.app.moviesforyou.R
 import com.tdr.app.moviesforyou.adapters.MovieListAdapter
-import com.tdr.app.moviesforyou.network.Movie
+import com.tdr.app.moviesforyou.data.Movie
 import com.tdr.app.moviesforyou.network.MoviesApiStatus
 
 
