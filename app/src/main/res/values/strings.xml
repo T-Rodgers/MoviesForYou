@@ -8,4 +8,5 @@
     <string name="top_rated_menu_item">Rating</string>
     <string name="popular_menu_item">Popularity</string>
     <string name="action_sort_by_title">Sort By</string>
+    <string name="status_image_contentdescription">error loading movies</string>
 </resources>

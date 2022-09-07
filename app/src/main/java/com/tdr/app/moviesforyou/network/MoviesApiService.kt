@@ -31,7 +31,7 @@ interface MoviesApiService {
 
     @GET(SHOW_POPULAR)
      suspend fun getPopularMovies(
-        @Query("api_key") type: String,
+        @Query("api_key") api: String,
         @Query("page") page: Int
     ): MoviesResponse
 
