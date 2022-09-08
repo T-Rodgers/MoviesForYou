@@ -3,8 +3,8 @@ package com.tdr.app.moviesforyou.utils
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.tdr.app.moviesforyou.database.MovieRepository
-import com.tdr.app.moviesforyou.database.getDatabase
+import com.tdr.app.moviesforyou.data.LocalDB
+import com.tdr.app.moviesforyou.data.MovieRepository
 import retrofit2.HttpException
 
 class RefreshMoviesWorker(appContext: Context, params: WorkerParameters) :
@@ -15,10 +15,10 @@ class RefreshMoviesWorker(appContext: Context, params: WorkerParameters) :
     }
 
     override suspend fun doWork(): Result {
-        val database = getDatabase(applicationContext)
-        val movieRepository = MovieRepository(database)
+        val movieDao = LocalDB.createMovieDao(applicationContext)
+        val movieRepository = MovieRepository(movieDao)
         return try {
-//            database.movieDao.deleteAllMovies()
+            movieDao.deleteAllMovies()
             movieRepository.refreshMovies()
             Result.success()
         } catch (e: HttpException) {
