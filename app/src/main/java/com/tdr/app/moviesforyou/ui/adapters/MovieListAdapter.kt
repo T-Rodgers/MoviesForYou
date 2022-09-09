@@ -1,4 +1,4 @@
-package com.tdr.app.moviesforyou.adapters
+package com.tdr.app.moviesforyou.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

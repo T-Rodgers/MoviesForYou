@@ -24,7 +24,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".fragments.MovieDetailsFragment">
+                tools:context=".ui.fragments.MovieDetailsFragment">
 
                 <ImageView
                     android:id="@+id/backdrop"

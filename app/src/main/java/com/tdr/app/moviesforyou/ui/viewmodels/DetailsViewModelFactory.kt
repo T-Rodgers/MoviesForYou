@@ -1,4 +1,4 @@
-package com.tdr.app.moviesforyou.details
+package com.tdr.app.moviesforyou.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

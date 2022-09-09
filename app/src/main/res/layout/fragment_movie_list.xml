@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.tdr.app.moviesforyou.network.MoviesViewModel" />
+            type="com.tdr.app.moviesforyou.ui.viewmodels.MoviesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.MovieListFragment">
+        tools:context=".ui.fragments.MovieListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -23,7 +23,7 @@
             android:padding="6dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
-            app:movieList="@{viewModel.movies}"/>
+            app:movieList="@{viewModel.movies}" />
 
         <!-- Linear progress indicator -->
         <ProgressBar

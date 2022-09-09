@@ -1,11 +1,7 @@
 package com.tdr.app.moviesforyou.data
 
-import com.tdr.app.moviesforyou.network.API_KEY
 import com.tdr.app.moviesforyou.network.MoviesApi
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.withContext
+import com.tdr.app.moviesforyou.ui.viewmodels.API_KEY
 
 class TrailersRepository {
 

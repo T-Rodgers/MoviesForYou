@@ -1,4 +1,4 @@
-package com.tdr.app.moviesforyou.fragments
+package com.tdr.app.moviesforyou.ui.fragments
 
 import android.os.Bundle
 import android.view.*
@@ -8,9 +8,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.tdr.app.moviesforyou.R
-import com.tdr.app.moviesforyou.adapters.MovieListAdapter
 import com.tdr.app.moviesforyou.databinding.FragmentMovieListBinding
-import com.tdr.app.moviesforyou.network.MoviesViewModel
+import com.tdr.app.moviesforyou.ui.adapters.MovieListAdapter
+import com.tdr.app.moviesforyou.ui.viewmodels.MoviesViewModel
 
 class MovieListFragment : Fragment() {
 

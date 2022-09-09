@@ -1,9 +1,8 @@
 package com.tdr.app.moviesforyou.data
 
-import com.tdr.app.moviesforyou.network.API_KEY
 import com.tdr.app.moviesforyou.network.MoviesApi
+import com.tdr.app.moviesforyou.ui.viewmodels.API_KEY
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 class MovieRepository(private val movieDao: MovieDao) {
 
