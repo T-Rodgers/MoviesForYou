@@ -13,7 +13,7 @@ data class Movie(
     @PrimaryKey
     val id: Int,
     val title: String,
-    val overview: String,
+    val overview: String?,
     @Json(name = "backdrop_path") val backdropPath: String?,
     @Json(name = "poster_path") val posterPath: String?,
     @Json(name = "release_date") val releaseDate: String?,
