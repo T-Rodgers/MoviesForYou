@@ -1,4 +1,4 @@
-package com.tdr.app.moviesforyou.fragments
+package com.tdr.app.moviesforyou.ui.fragments
 
 import android.os.Bundle
 import android.view.*
@@ -17,7 +17,6 @@ import com.tdr.app.moviesforyou.databinding.FragmentMovieListBinding
 import com.tdr.app.moviesforyou.network.MoviePagingViewModel
 import com.tdr.app.moviesforyou.network.MoviePagingViewModelFactory
 import com.tdr.app.moviesforyou.network.MoviesApi
-import com.tdr.app.moviesforyou.ui.fragments.MovieListFragmentDirections
 import com.tdr.app.moviesforyou.ui.viewmodels.MoviesViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

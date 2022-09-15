@@ -2,8 +2,8 @@ package com.tdr.app.moviesforyou.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.tdr.app.moviesforyou.network.API_KEY
 import com.tdr.app.moviesforyou.network.MoviesApiService
+import com.tdr.app.moviesforyou.ui.viewmodels.API_KEY
 import timber.log.Timber
 
 private const val MOVIEDB_STARTING_PAGE_INDEX = 1
