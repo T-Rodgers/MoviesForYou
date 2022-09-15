@@ -84,7 +84,7 @@ fun bindBackdropPhoto(backdropImageView: ImageView, movie: Movie?) {
 
 @BindingAdapter("overview")
 fun TextView.setOverviewText(movie: Movie?) {
-    text = movie?.let { movie.overview }
+    text = if (movie?.overview.isNullOrBlank()) "No Overview Found" else movie?.overview
 }
 
 @RequiresApi(Build.VERSION_CODES.N)

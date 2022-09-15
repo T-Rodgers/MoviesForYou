@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import com.google.android.material.snackbar.Snackbar
 import com.tdr.app.moviesforyou.R
 import com.tdr.app.moviesforyou.adapters.MoviePagerAdapter
 import com.tdr.app.moviesforyou.data.MoviePagingRepository
@@ -94,6 +95,15 @@ class MovieListFragment : Fragment() {
                 }
                 errorState?.let {
                     Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG).show()
+                    Snackbar.make(
+                        requireView(),
+                        "Error retrieving movies...",
+                        Snackbar.LENGTH_INDEFINITE
+                    )
+                        .setAction("Retry") {
+                            adapter.retry()
+                        }
+                        .show()
                 }
 
             }
