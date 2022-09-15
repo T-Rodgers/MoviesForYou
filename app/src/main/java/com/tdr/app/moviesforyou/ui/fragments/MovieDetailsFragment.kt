@@ -1,10 +1,7 @@
-package com.tdr.app.moviesforyou.fragments
+package com.tdr.app.moviesforyou.ui.fragments
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkCapabilities
-import android.net.NetworkInfo
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -16,8 +13,8 @@ import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFI
 import com.google.android.material.snackbar.Snackbar
 import com.tdr.app.moviesforyou.R
 import com.tdr.app.moviesforyou.databinding.FragmentMovieDetailsBinding
-import com.tdr.app.moviesforyou.details.DetailsViewModel
-import com.tdr.app.moviesforyou.details.DetailsViewModelFactory
+import com.tdr.app.moviesforyou.ui.viewmodels.DetailsViewModel
+import com.tdr.app.moviesforyou.ui.viewmodels.DetailsViewModelFactory
 import timber.log.Timber
 
 class MovieDetailsFragment : Fragment() {
@@ -70,7 +67,7 @@ class MovieDetailsFragment : Fragment() {
         } else {
             Snackbar.make(
                 requireView(),
-                "No available network",
+                "No available network.",
                 LENGTH_INDEFINITE
             )
                 .setAction(android.R.string.ok) {

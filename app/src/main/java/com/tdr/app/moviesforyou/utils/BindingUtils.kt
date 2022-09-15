@@ -9,7 +9,8 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.tdr.app.moviesforyou.R
 import com.tdr.app.moviesforyou.data.Movie
-import com.tdr.app.moviesforyou.network.MoviesApiStatus
+import com.tdr.app.moviesforyou.ui.adapters.MovieListAdapter
+import com.tdr.app.moviesforyou.ui.viewmodels.MoviesApiStatus
 
 
 private const val BASE_BACKDROP_PATH_URL = "https://image.tmdb.org/t/p/w780" // 780x439
