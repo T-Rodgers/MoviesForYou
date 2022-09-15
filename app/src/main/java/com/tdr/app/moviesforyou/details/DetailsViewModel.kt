@@ -55,7 +55,7 @@ class DetailsViewModel(movie: Movie, application: Application) : AndroidViewMode
         if (_trailers.value?.isEmpty() == true) {
             Toast.makeText(
                 context,
-                "No trailer found",
+                "No Trailer Found",
                 Toast.LENGTH_LONG
             ).show()
         } else {

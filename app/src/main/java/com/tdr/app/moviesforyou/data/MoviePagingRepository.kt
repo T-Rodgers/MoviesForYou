@@ -15,8 +15,7 @@ class MoviePagingRepository(private val service: MoviesApiService) {
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
-                enablePlaceholders = false,
-                initialLoadSize = 21
+                enablePlaceholders = false
             ),
             pagingSourceFactory = {
                 MoviePagingSource(service)
@@ -26,7 +25,7 @@ class MoviePagingRepository(private val service: MoviesApiService) {
     }
 
     companion object {
-        const val NETWORK_PAGE_SIZE = 42
+        const val NETWORK_PAGE_SIZE = 84
     }
 
 }
