@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.tdr.app.moviesforyou.network.MoviesViewModel" />
+            type="com.tdr.app.moviesforyou.ui.viewmodels.MoviesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
