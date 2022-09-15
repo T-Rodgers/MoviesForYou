@@ -1,6 +1,10 @@
-package com.tdr.app.moviesforyou.data
+package com.tdr.app.moviesforyou.db
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.tdr.app.moviesforyou.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 @Dao

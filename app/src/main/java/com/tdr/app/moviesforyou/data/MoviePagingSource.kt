@@ -2,6 +2,7 @@ package com.tdr.app.moviesforyou.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.tdr.app.moviesforyou.model.Movie
 import com.tdr.app.moviesforyou.network.MoviesApiService
 import com.tdr.app.moviesforyou.ui.viewmodels.API_KEY
 import timber.log.Timber

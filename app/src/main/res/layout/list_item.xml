@@ -5,7 +5,7 @@
     <data>
         <variable
             name="movie"
-            type="com.tdr.app.moviesforyou.data.Movie" />
+            type="com.tdr.app.moviesforyou.model.Movie" />
 
     </data>
 

@@ -3,9 +3,9 @@ package com.tdr.app.moviesforyou.ui.viewmodels
 import android.app.Application
 import androidx.lifecycle.*
 import com.tdr.app.moviesforyou.BuildConfig
-import com.tdr.app.moviesforyou.data.LocalDB
-import com.tdr.app.moviesforyou.data.Movie
 import com.tdr.app.moviesforyou.data.MovieRepository
+import com.tdr.app.moviesforyou.db.LocalDB
+import com.tdr.app.moviesforyou.model.Movie
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

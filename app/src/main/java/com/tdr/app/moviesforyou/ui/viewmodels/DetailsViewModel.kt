@@ -9,9 +9,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.tdr.app.moviesforyou.data.Movie
-import com.tdr.app.moviesforyou.data.Trailer
 import com.tdr.app.moviesforyou.data.TrailersRepository
+import com.tdr.app.moviesforyou.model.Movie
+import com.tdr.app.moviesforyou.model.Trailer
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

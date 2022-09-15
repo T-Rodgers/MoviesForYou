@@ -8,8 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.tdr.app.moviesforyou.R
-import com.tdr.app.moviesforyou.data.Movie
-import com.tdr.app.moviesforyou.ui.adapters.MovieListAdapter
+import com.tdr.app.moviesforyou.model.Movie
 import com.tdr.app.moviesforyou.ui.viewmodels.MoviesApiStatus
 
 

@@ -3,8 +3,8 @@ package com.tdr.app.moviesforyou.utils
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.tdr.app.moviesforyou.data.LocalDB
 import com.tdr.app.moviesforyou.data.MovieRepository
+import com.tdr.app.moviesforyou.db.LocalDB
 import retrofit2.HttpException
 
 class RefreshMoviesWorker(appContext: Context, params: WorkerParameters) :

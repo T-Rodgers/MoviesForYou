@@ -3,6 +3,7 @@ package com.tdr.app.moviesforyou.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.tdr.app.moviesforyou.model.Movie
 import com.tdr.app.moviesforyou.network.MoviesApiService
 import kotlinx.coroutines.flow.Flow
 

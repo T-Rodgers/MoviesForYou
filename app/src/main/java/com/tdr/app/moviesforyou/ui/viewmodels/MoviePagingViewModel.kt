@@ -1,12 +1,12 @@
-package com.tdr.app.moviesforyou.network
+package com.tdr.app.moviesforyou.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.tdr.app.moviesforyou.data.Movie
 import com.tdr.app.moviesforyou.data.MoviePagingRepository
+import com.tdr.app.moviesforyou.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 class MoviePagingViewModel(private val moviePagingRepository: MoviePagingRepository) : ViewModel() {

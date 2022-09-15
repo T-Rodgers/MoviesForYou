@@ -1,12 +1,12 @@
-package com.tdr.app.moviesforyou.adapters
+package com.tdr.app.moviesforyou.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.tdr.app.moviesforyou.data.Movie
 import com.tdr.app.moviesforyou.databinding.ListItemBinding
+import com.tdr.app.moviesforyou.model.Movie
 
 class MoviePagerAdapter(private val clickListener: MovieItemClickListener) :
     PagingDataAdapter<Movie, MoviePagerAdapter.MoviePagerViewHolder>(MovieDiffUtilCallback()) {

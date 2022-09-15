@@ -11,12 +11,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.tdr.app.moviesforyou.R
-import com.tdr.app.moviesforyou.adapters.MoviePagerAdapter
 import com.tdr.app.moviesforyou.data.MoviePagingRepository
 import com.tdr.app.moviesforyou.databinding.FragmentMovieListBinding
-import com.tdr.app.moviesforyou.network.MoviePagingViewModel
-import com.tdr.app.moviesforyou.network.MoviePagingViewModelFactory
 import com.tdr.app.moviesforyou.network.MoviesApi
+import com.tdr.app.moviesforyou.ui.adapters.MoviePagerAdapter
+import com.tdr.app.moviesforyou.ui.viewmodels.MoviePagingViewModel
+import com.tdr.app.moviesforyou.ui.viewmodels.MoviePagingViewModelFactory
 import com.tdr.app.moviesforyou.ui.viewmodels.MoviesViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

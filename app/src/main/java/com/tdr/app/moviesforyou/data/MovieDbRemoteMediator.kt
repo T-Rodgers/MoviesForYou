@@ -4,6 +4,8 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
+import com.tdr.app.moviesforyou.db.MovieDao
+import com.tdr.app.moviesforyou.model.Movie
 import com.tdr.app.moviesforyou.network.MoviesApiService
 
 @OptIn(ExperimentalPagingApi::class)
