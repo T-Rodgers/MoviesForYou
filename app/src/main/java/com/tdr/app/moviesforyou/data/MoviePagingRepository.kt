@@ -20,13 +20,12 @@ class MoviePagingRepository(private val service: MoviesApiService) {
             ),
             pagingSourceFactory = {
                 MoviePagingSource(service)
-            },
-            initialKey = 1
+            }
         ).flow
     }
 
     companion object {
-        const val NETWORK_PAGE_SIZE = 84
+        const val NETWORK_PAGE_SIZE = 40
     }
 
 }
