@@ -6,6 +6,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/tdr00/Desktop/AndroidDevelopment/UdacityKotlinNanodegree/MoviesForYou/app/src/main/res/drawable/ic_baseline_theaters_24.xml" value="0.15" />
         <entry key="..\:/Users/tdr00/Desktop/AndroidDevelopment/UdacityKotlinNanodegree/MoviesForYou/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/tdr00/Desktop/AndroidDevelopment/UdacityKotlinNanodegree/MoviesForYou/app/src/main/res/layout/fragment_movie_details.xml" value="0.3625" />
         <entry key="..\:/Users/tdr00/Desktop/AndroidDevelopment/UdacityKotlinNanodegree/MoviesForYou/app/src/main/res/layout/fragment_movie_list.xml" value="0.33055555555555555" />
